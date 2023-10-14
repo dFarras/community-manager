@@ -9,35 +9,17 @@
   </parent>
 
   <groupId>org.vtes.communitymanager</groupId>
-  <artifactId>boot</artifactId>
+  <artifactId>internal-calendar</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>boot</name>
-  <url>https://vtesguarida.org</url>
+  <name>internal-calendar</name>
+  <url>http://maven.apache.org</url>
   <packaging>jar</packaging>
 
   <dependencies>
     <!-- Spring dependencies -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-mongodb</artifactId>
-    </dependency>
-    <!-- HTPP Client -->
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-openfeign</artifactId>
-    </dependency>
-    <!-- Google Calendar -->
-    <dependency>
-      <groupId>com.google.apis</groupId>
-      <artifactId>google-api-services-calendar</artifactId>
     </dependency>
     <!-- Other utilities -->
     <dependency>
@@ -48,20 +30,8 @@
     <!-- Internal -->
     <dependency>
       <groupId>org.vtes.communitymanager</groupId>
-      <artifactId>events</artifactId>
+      <artifactId>calendar-common</artifactId>
       <version>${internal.version}</version>
     </dependency>
   </dependencies>
-
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>${maven.compiler.source}</source>
-          <target>${maven.compiler.target}</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>

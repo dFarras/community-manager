@@ -1,71 +1,101 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.4</version>
-        <relativePath/>
-        <!-- lookup parent from repository -->
-    </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.1.4</version>
+    <relativePath/>
+  </parent>
+    
+  <groupId>org.vtes</groupId>
+  <artifactId>community-manager</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>community-manager</name>
+  <description>Backend to provide utilities to VTES GUI</description>
+  <packaging>pom</packaging>
 
-    <groupId>org.vtes</groupId>
-    <artifactId>community-manager</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>community-manager</name>
-    <description>Backend to provide utilities to VTES GUI</description>
-    <packaging>pom</packaging>
+  <properties>
+    <start-class>org.vtes.communitymanager.CommunityManagerApplication.java</start-class>
+    <java.version>21</java.version>
+    <maven.compiler.target>21</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source>
+    <spring-cloud.version>2022.0.4</spring-cloud.version>
+    <google-calendar.version>v3-rev20220715-2.0.0</google-calendar.version>
+    <google-oauth-client-jetty.version>1.34.1</google-oauth-client-jetty.version>
+    <google-api-client.version>2.0.0</google-api-client.version>
+    <lombok.version>1.18.30</lombok.version>
+    <internal.version>1.0-SNAPSHOT</internal.version>
+  </properties>
 
-    <properties>
-        <java.version>21</java.version>
-        <spring-cloud.version>2022.0.4</spring-cloud.version>
-        <google-calendar.version>v3-rev411-1.25.0</google-calendar.version>
-        <lombok.version>1.18.30</lombok.version>
-    </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <!-- Google Calendar -->
-            <dependency>
-                <groupId>com.google.apis</groupId>
-                <artifactId>google-api-services-calendar</artifactId>
-                <version>${google-calendar.version}</version>
-            </dependency>
-            <!-- Other utilities -->
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-    <modules>
-        <module>events</module>
-        <module>boot</module>
-    </modules>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- Google Calendar -->
+      <dependency>
+        <groupId>com.google.api-client</groupId>
+        <artifactId>google-api-client</artifactId>
+        <version>${google-api-client.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.oauth-client</groupId>
+        <artifactId>google-oauth-client-jetty</artifactId>
+        <version>${google-oauth-client-jetty.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.apis</groupId>
+        <artifactId>google-api-services-calendar</artifactId>
+        <version>${google-calendar.version}</version>
+      </dependency>
+      <!-- Other utilities -->
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+    
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>${maven.compiler.source}</source>
+            <target>${maven.compiler.target}</target>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+<!--    <plugins>-->
+<!--      <plugin>-->
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--        <configuration>-->
+<!--          <excludes>-->
+<!--            <exclude>-->
+<!--              <groupId>org.projectlombok</groupId>-->
+<!--              <artifactId>lombok</artifactId>-->
+<!--            </exclude>-->
+<!--          </excludes>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
+<!--    </plugins>-->
+  </build>
+    
+  <modules>
+    <module>events</module>
+    <module>boot</module>
+    <module>google-calendar</module>
+    <module>calendar-common</module>
+    <module>internal-calendar</module>
+  </modules>
+  
 </project>
