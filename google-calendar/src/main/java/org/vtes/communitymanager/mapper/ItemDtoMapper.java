@@ -1,6 +1,7 @@
-package org.vtes.communitymanager.google;
+package org.vtes.communitymanager.mapper;
 
 import com.google.api.services.calendar.model.Event;
+import com.google.api.services.calendar.model.EventAttendee;
 import org.springframework.stereotype.Component;
 import org.vtes.communitymanager.model.EventDto;
 
@@ -16,11 +17,15 @@ public class ItemDtoMapper {
             .collect(Collectors.toList());
     }
     public EventDto from(Event event) {
-        String strDateTime = event.getStart().getDateTime().toString();
+        final String strStartDateTime = event.getStart().getDateTime().toString();
+        final String strEndDateTime = event.getEnd().getDateTime().toString();
+        final List<String> attendeeEmails = event.getAttendees().stream().map(EventAttendee::getEmail).toList();
         return EventDto.builder()
             .title(event.getSummary())
             .description(event.getDescription())
-            .date(OffsetDateTime.parse(strDateTime))
+            .start(OffsetDateTime.parse(strStartDateTime))
+            .end(OffsetDateTime.parse(strEndDateTime))
+            .attendees(attendeeEmails)
             .build();
     }
 }

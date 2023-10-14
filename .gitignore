@@ -17,3 +17,10 @@ target/
 *.iws
 *.iml
 *.ipr
+
+### Calendar ###
+tokens/
+**/credentials.json
+
+**/application-secrets.yml
+

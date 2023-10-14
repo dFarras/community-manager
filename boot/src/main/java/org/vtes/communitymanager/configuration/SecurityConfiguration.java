@@ -15,7 +15,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain calendarSecurityFilterChain(
         final HttpSecurity httpSecurity
     ) throws Exception {
-        return httpSecurity.authorizeHttpRequests(
+        return httpSecurity.csrf().disable().authorizeHttpRequests(
                 (authorizeHttpRequests) -> authorizeHttpRequests.anyRequest().permitAll())
             .build();
     }
