@@ -1,3 +1,21 @@
 spring:
   profiles:
     active: secrets
+  application:
+    name: community-manager
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000/auth/realms/vtes-users
+          jwk-set-uri: http://localhost:9000/auth/realms/vtes-users/protocol/openid-connect/certs
+
+jwt:
+  auth:
+    converter:
+      resource-id: vtes-users-client
+      principal-attribute: preferred_username
+
+logging:
+  level:
+    org.springframework.security: DEBUG

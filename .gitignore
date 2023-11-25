@@ -22,5 +22,9 @@ target/
 tokens/
 **/credentials.json
 
+### Spring boot ###
 **/application-secrets.yml
+
+### Linux ###
+**/.attach_pid*
 

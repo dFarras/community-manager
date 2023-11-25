@@ -7,7 +7,7 @@
     <version>3.1.4</version>
     <relativePath/>
   </parent>
-    
+      
   <groupId>org.vtes</groupId>
   <artifactId>community-manager</artifactId>
   <version>1.0-SNAPSHOT</version>
@@ -27,7 +27,7 @@
     <lombok.version>1.18.30</lombok.version>
     <internal.version>1.0-SNAPSHOT</internal.version>
   </properties>
-
+    
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -36,6 +36,12 @@
         <version>${spring-cloud.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <!-- Security -->
+      <dependency>
+        <groupId>org.keycloak</groupId>
+        <artifactId>keycloak-spring-boot-starter</artifactId>
+        <version>22.0.5</version>
       </dependency>
       <!-- Google Calendar -->
       <dependency>
@@ -61,7 +67,7 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-    
+      
   <build>
     <pluginManagement>
       <plugins>
@@ -74,28 +80,29 @@
         </plugin>
       </plugins>
     </pluginManagement>
-<!--    <plugins>-->
-<!--      <plugin>-->
-<!--        <groupId>org.springframework.boot</groupId>-->
-<!--        <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--        <configuration>-->
-<!--          <excludes>-->
-<!--            <exclude>-->
-<!--              <groupId>org.projectlombok</groupId>-->
-<!--              <artifactId>lombok</artifactId>-->
-<!--            </exclude>-->
-<!--          </excludes>-->
-<!--        </configuration>-->
-<!--      </plugin>-->
-<!--    </plugins>-->
+    <!--    <plugins>-->
+    <!--      <plugin>-->
+    <!--        <groupId>org.springframework.boot</groupId>-->
+    <!--        <artifactId>spring-boot-maven-plugin</artifactId>-->
+    <!--        <configuration>-->
+    <!--          <excludes>-->
+    <!--            <exclude>-->
+    <!--              <groupId>org.projectlombok</groupId>-->
+    <!--              <artifactId>lombok</artifactId>-->
+    <!--            </exclude>-->
+    <!--          </excludes>-->
+    <!--        </configuration>-->
+    <!--      </plugin>-->
+    <!--    </plugins>-->
   </build>
-    
+
   <modules>
-    <module>events</module>
+    <module>events-api</module>
     <module>boot</module>
     <module>google-calendar</module>
     <module>calendar-common</module>
-    <module>internal-calendar</module>
+    <module>internal-events</module>
+    <module>event-scheduler</module>
   </modules>
-  
+    
 </project>
