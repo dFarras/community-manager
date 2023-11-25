@@ -3,7 +3,7 @@ package org.vtes.communitymanager.mapper;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.EventAttendee;
 import org.springframework.stereotype.Component;
-import org.vtes.communitymanager.model.EventDto;
+import org.vtes.communitymanager.event.EventDto;
 
 import java.time.OffsetDateTime;
 import java.util.List;

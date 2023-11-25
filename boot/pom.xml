@@ -15,6 +15,10 @@
   <url>https://vtesguarida.org</url>
   <packaging>jar</packaging>
 
+  <properties>
+    <start-class>org.vtes.communitymanager.CommunityManagerApplication</start-class>
+  </properties>
+
   <dependencies>
     <!-- Spring dependencies -->
     <dependency>
@@ -29,6 +33,23 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-mongodb</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-oauth2-client</artifactId>-->
+<!--    </dependency>-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+    </dependency>
+    <!-- Security -->
+<!--    <dependency>-->
+<!--      <groupId>org.keycloak</groupId>-->
+<!--      <artifactId>keycloak-spring-boot-starter</artifactId>-->
+<!--    </dependency>-->
     <!-- HTPP Client -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
@@ -48,13 +69,34 @@
     <!-- Internal -->
     <dependency>
       <groupId>org.vtes.communitymanager</groupId>
-      <artifactId>events</artifactId>
+      <artifactId>events-api</artifactId>
+      <version>${internal.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.vtes.communitymanager</groupId>
+      <artifactId>event-scheduler</artifactId>
       <version>${internal.version}</version>
     </dependency>
   </dependencies>
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <finalName>vtes-community-back</finalName>
+          <mainClass>org.vtes.communitymanager.CommunityManagerApplication</mainClass>
+          <layout>JAR</layout>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>

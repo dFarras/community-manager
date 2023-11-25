@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.vtes.communitymanager.handlers.GoogleCalendarHandler;
 import org.vtes.communitymanager.mapper.ItemDtoMapper;
-import org.vtes.communitymanager.model.EventDto;
+import org.vtes.communitymanager.event.EventDto;
 
 import java.io.IOException;
 import java.time.OffsetDateTime;
